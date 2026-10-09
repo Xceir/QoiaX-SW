@@ -317,3 +317,14 @@ button, .primary-button, .secondary-button, .nav-cta, .quiet-button {
 .login-footer{position:relative;z-index:1;display:flex;justify-content:space-between;gap:12px;width:min(1180px,calc(100% - 56px));margin:auto;padding:17px 0 22px;border-top:1px solid rgba(30,57,88,.07);color:#a0a8b5;font-size:8px;font-weight:750;letter-spacing:1px}@keyframes login-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
 @media(max-width:850px){.login-layout{grid-template-columns:minmax(0,1fr) minmax(320px,.85fr);gap:28px}.login-story h1{font-size:clamp(43px,6vw,58px);letter-spacing:-3px}.login-decor-card{max-width:310px}}
 @media(max-width:680px){.login-topbar,.login-footer{width:calc(100% - 32px)}.login-layout{display:flex;flex-direction:column;align-items:stretch;width:calc(100% - 32px);min-height:auto;gap:28px;padding:38px 0 34px}.login-story{max-width:none}.login-story h1{font-size:clamp(42px,12vw,58px);margin:20px 0 12px;letter-spacing:-2.8px}.login-lead{font-size:12px}.login-feature-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}.login-feature-list>div{align-items:flex-start;gap:8px}.login-feature-icon{width:34px;height:34px;flex:0 0 auto}.login-feature-list b{font-size:9px}.login-feature-list small{font-size:8px;line-height:1.5}.login-decor-card{display:none}.login-form-wrap{max-width:none}.login-form-card{padding:23px;border-radius:22px}.login-form-heading{margin:16px 0 22px}.login-footer{flex-wrap:wrap;font-size:7px}.login-footer span:last-child{width:100%}.login-version{font-size:8px;letter-spacing:.8px}}@media(max-width:390px){.login-feature-list{grid-template-columns:1fr}.login-feature-list>div{align-items:center}.login-topbar{height:70px}.login-version{font-size:7px}.login-form-card{padding:19px}}
+
+
+/* External processing workflow additions */
+.form-divider { height: 1px; margin: 1.5rem 0; background: var(--border, rgba(255,255,255,.12)); }
+.spin { animation: qoiax-spin 1s linear infinite; }
+@keyframes qoiax-spin { to { transform: rotate(360deg); } }
+.status-message a { color: inherit; text-decoration: underline; font-weight: 700; overflow-wrap: anywhere; }
+.primary-button:disabled { opacity: .65; cursor: wait; }
+
+.checkbox-field { display: flex; align-items: center; gap: .65rem; margin: .8rem 0 1rem; cursor: pointer; }
+.checkbox-field input { accent-color: currentColor; width: 16px; height: 16px; }
