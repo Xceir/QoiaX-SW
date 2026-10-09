@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
-  basePath: "/QoiaX-SW",
+  // API routes and Playwright require a Node.js server; static export / GitHub Pages is not supported.
   images: { unoptimized: true },
-  trailingSlash: true,
   poweredByHeader: false,
 };
 export default nextConfig;
