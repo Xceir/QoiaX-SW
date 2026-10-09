@@ -1,11 +1,12 @@
 {
-  "name": "qoiAX-sw",
-  "version": "1.0.0",
+  "name": "qoiax-wizard",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "14.2.33",
