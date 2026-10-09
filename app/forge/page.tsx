@@ -1,13 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   ArrowLeft, ArrowUpRight, FileKey2, UnlockKeyhole, LockKeyhole, Globe2,
-  SlidersHorizontal, UploadCloud, File, X, Check, ShieldCheck, CircleHelp,
+  SlidersHorizontal, UploadCloud, File as FileIcon, X, Check, ShieldCheck, CircleHelp,
   ChevronRight, Sparkles, RotateCcw
 } from "lucide-react";
 
@@ -88,7 +86,7 @@ export default function ForgePage() {
     <div className="selected-files">
       {list.map((file, index) => (
         <div className="selected-file" key={`${file.name}-${file.size}`}>
-          <span className="selected-file-icon"><File size={17} /></span>
+          <span className="selected-file-icon"><FileIcon size={17} /></span>
           <span className="selected-file-copy"><b>{file.name}</b><small>{formatSize(file.size)}</small></span>
           <button type="button" className="icon-button" aria-label={`Remove ${file.name}`} onClick={() => setter(list.filter((_, i) => i !== index))}><X size={15} /></button>
         </div>
