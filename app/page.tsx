@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight, FileKey2, UnlockKeyhole, LockKeyhole,
@@ -16,7 +18,14 @@ const tools = [
   { id: "cusa", name: "CUSA Database", description: "Look up PlayStation 4 title identifiers.", detail: "REFERENCE", href: "/cusa", icon: Search, tone: "sky" },
 ];
 
+const AUTH_KEY = "qoiax-wizard-session";
 export default function Home() {
+  const router = useRouter();
+  useEffect(() => {
+    try { if (window.sessionStorage.getItem(AUTH_KEY) !== "ok") router.replace("/login"); }
+    catch { router.replace("/login"); }
+  }, [router]);
+  if (typeof window !== "undefined" && window.sessionStorage.getItem(AUTH_KEY) !== "ok") return null;
   return (
     <main className="site-shell">
       <div className="ambient ambient-one" aria-hidden="true" />
