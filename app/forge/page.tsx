@@ -1,53 +1,28 @@
-"use client"
-import { useState } from "react"
-import Link from "next/link"
-import { ArrowLeft, UploadCloud, FileKey, Unlock, Lock, Globe, ShieldCheck } from "lucide-react"
+"use client";
 
-export default function ForgePage() {
-  const [tab, setTab] = useState("resign")
-  const [psid, setPsid] = useState("")
-  const [drag, setDrag] = useState(false)
-  const tabs = [
-    {id:"resign", label:"Resign", icon:FileKey},
-    {id:"decrypt", label:"Decrypt", icon:Unlock},
-    {id:"encrypt", label:"Encrypt", icon:Lock},
-    {id:"reregion", label:"ReRegion", icon:Globe},
-    {id:"cheats", label:"Cheats", icon:ShieldCheck},
-  ]
-  return (
-    <main style={{minHeight:"100vh", background:"#050507", color:"white", paddingBottom:"60px"}}>
-      <div style={{maxWidth:"900px", margin:"0 auto", padding:"24px"}}>
-        <Link href="/" style={{color:"rgba(255,255,255,0.6)", textDecoration:"none", display:"flex", gap:"8px", alignItems:"center", marginBottom:"20px"}}><ArrowLeft size={16}/> بازگشت</Link>
-        <div style={{display:"flex", gap:"8px", overflowX:"auto", paddingBottom:"12px", marginBottom:"20px"}}>
-          {tabs.map((t)=>(
-            <button key={t.id} onClick={()=>setTab(t.id)} style={{display:"flex", gap:"8px", alignItems:"center", padding:"12px 20px", borderRadius:"999px", border:"1px solid rgba(255,255,255,0.1)", background: tab===t.id ? "white" : "rgba(255,255,255,0.06)", color: tab===t.id ? "black" : "white", fontWeight:700, cursor:"pointer", whiteSpace:"nowrap"}}>
-              <t.icon size={16}/> {t.label}
-            </button>
-          ))}
-        </div>
-        <div style={{background:"rgba(255,255,255,0.06)", border:"1px solid rgba(255,255,255,0.1)", borderRadius:"28px", padding:"28px", backdropFilter:"blur(20px)"}}>
-          <h2 style={{fontSize:"24px", fontWeight:900, display:"flex", gap:"12px", justifyContent:"center", alignItems:"center", marginBottom:"20px"}}>
-            {tab==="resign" && <><FileKey/> Resign Save</>}
-            {tab==="decrypt" && <><Unlock/> Decrypt Save</>}
-            {tab==="encrypt" && <><Lock/> Encrypt Save</>}
-            {tab==="reregion" && <><Globe/> ReRegion</>}
-            {tab==="cheats" && <><ShieldCheck/> UFO Save Editor / Cheats</>}
-          </h2>
-          {tab!=="decrypt" && tab!=="cheats" && (
-            <div style={{marginBottom:"16px"}}>
-              <label style={{opacity:0.6, fontSize:"14px"}}>PlayStation ID (username)</label>
-              <input value={psid} onChange={(e)=>setPsid(e.target.value)} placeholder="Ex: QoiaX-YT" style={{width:"100%", height:"48px", background:"rgba(0,0,0,0.3)", border:"1px solid rgba(255,255,255,0.1)", borderRadius:"12px", padding:"0 16px", color:"white", marginTop:"8px"}}/>
-            </div>
-          )}
-          <div onDragOver={(e)=>{e.preventDefault(); setDrag(true)}} onDragLeave={()=>setDrag(false)} onDrop={(e)=>{e.preventDefault(); setDrag(false); alert("فایل دریافت شد! در نسخه موتور واقعی پردازش میشود")}} style={{border:"2px dashed", borderColor: drag ? "#8b5cf6" : "rgba(255,255,255,0.2)", background: drag ? "rgba(139,92,246,0.1)" : "rgba(0,0,0,0.2)", borderRadius:"24px", padding:"40px", textAlign:"center"}}>
-            <UploadCloud size={48} style={{margin:"0 auto", opacity:0.8}}/>
-            <div style={{fontWeight:700, marginTop:"16px"}}>Drag encrypted saves here or click to select</div>
-            <div style={{opacity:0.4, fontSize:"13px", marginTop:"8px"}}>Pairs file ex: SAVEDATAxxxx + SAVEDATAxxxx.bin</div>
-            <button style={{marginTop:"16px", background:"white", color:"black", padding:"10px 24px", borderRadius:"999px", fontWeight:900, border:"none", cursor:"pointer"}}>انتخاب فایل</button>
-          </div>
-          <button onClick={()=>alert("در نسخه واقعی با PSN ID: "+psid+" پردازش انجام میشود!")} style={{width:"100%", height:"56px", background:"linear-gradient(to right, #8b5cf6, #06ffa5)", border:"none", borderRadius:"16px", color:"white", fontWeight:900, fontSize:"18px", marginTop:"20px", cursor:"pointer"}}>Execute - اجرا</button>
-        </div>
-      </div>
-    </main>
-  )
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { ArrowLeft, FileKey2, UnlockKeyhole, LockKeyhole, Globe2, SlidersHorizontal, UploadCloud, File, X, Check } from "lucide-react";
+
+type Tab = "resign" | "decrypt" | "encrypt" | "reregion" | "cheats";
+const tabs: { id: Tab; label: string; icon: typeof FileKey2; title: string; description: string }[] = [
+ {id:"resign",label:"Resign",icon:FileKey2,title:"Save Resigner",description:"Select the save files you want to prepare for a profile."},
+ {id:"decrypt",label:"Decrypt",icon:UnlockKeyhole,title:"Decrypt Save",description:"Choose supported save data to prepare it for a decryption workflow."},
+ {id:"encrypt",label:"Encrypt",icon:LockKeyhole,title:"Encrypt Save",description:"Select the save data you want to prepare for encryption."},
+ {id:"reregion",label:"ReRegion",icon:Globe2,title:"Region Tools",description:"Review a title ID and its regional identifier."},
+ {id:"cheats",label:"Save Lab",icon:SlidersHorizontal,title:"Save Lab",description:"A workspace for save-file research and preparation."},
+];
+export default function ForgePage(){
+ const [tab,setTab]=useState<Tab>("resign"); const [files,setFiles]=useState<File[]>([]); const [drag,setDrag]=useState(false); const [psid,setPsid]=useState(""); const [titleId,setTitleId]=useState(""); const [message,setMessage]=useState(""); const inputRef=useRef<HTMLInputElement>(null);
+ useEffect(()=>{const value=new URLSearchParams(window.location.search).get("tab");if(tabs.some(t=>t.id===value))setTab(value as Tab)},[]);
+ const active=tabs.find(t=>t.id===tab)!; const accept=(list:FileList|null)=>{if(!list)return;setFiles(old=>[...old,...Array.from(list)].filter((f,i,a)=>a.findIndex(x=>x.name===f.name&&x.size===f.size)===i));setMessage("")};
+ return <main className="subpage-shell"><div className="subpage"><Link href="/" className="back-link"><ArrowLeft size={15}/> Back to QoiaX Wizard</Link><h1 className="page-heading">Save tools</h1><p className="page-lead">A minimal workspace for your PlayStation save files.</p>
+ <div className="tab-list">{tabs.map(t=><button key={t.id} className={`tab-button ${tab===t.id?"active":""}`} onClick={()=>{setTab(t.id);setMessage("")}}><t.icon size={15}/>{t.label}</button>)}</div>
+ <section className="surface-card" style={{padding:"clamp(17px,4vw,27px)"}}><div style={{display:"flex",alignItems:"center",gap:12}}><span className="tool-icon"><active.icon size={19}/></span><div><h2 style={{fontSize:18,margin:0,fontWeight:700,letterSpacing:"-.5px"}}>{active.title}</h2><p style={{fontSize:12,color:"#858d99",margin:"5px 0 0",lineHeight:1.6}}>{active.description}</p></div></div>
+ {tab==="resign"&&<><label className="field-label" htmlFor="psn-id">PSN online ID (optional)</label><input id="psn-id" className="text-field" value={psid} onChange={e=>setPsid(e.target.value)} placeholder="Enter your profile ID" autoComplete="off"/></>}
+ {tab==="reregion"&&<><label className="field-label" htmlFor="title-id">Game title ID</label><input id="title-id" className="text-field" value={titleId} onChange={e=>setTitleId(e.target.value.toUpperCase())} placeholder="CUSA00000" maxLength={9} autoComplete="off"/><div className="notice">A title ID can identify a release, but region mapping may vary by title. Use the CUSA database to search known IDs.</div><Link className="quiet-button" href="/cusa" style={{marginTop:12,textDecoration:"none"}}>Open CUSA database</Link></>}
+ {tab!=="reregion"&&<><div className={`drop-zone ${drag?"dragging":""}`} onDragOver={e=>{e.preventDefault();setDrag(true)}} onDragLeave={()=>setDrag(false)} onDrop={e=>{e.preventDefault();setDrag(false);accept(e.dataTransfer.files)}} onClick={()=>inputRef.current?.click()} role="button" tabIndex={0} onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();inputRef.current?.click()}}}><UploadCloud size={27}/><strong>Drop save files here, or browse</strong><small>Files remain in your browser until you leave this page.<br/>No file is uploaded by this interface.</small><button type="button" className="quiet-button" onClick={e=>{e.stopPropagation();inputRef.current?.click()}}>Choose files</button><input ref={inputRef} hidden type="file" multiple onChange={e=>{accept(e.target.files);e.currentTarget.value=""}}/></div>{files.length>0&&<div style={{marginTop:13,border:"1px solid #edf0f4",borderRadius:13,overflow:"hidden"}}>{files.map((f,i)=><div key={`${f.name}-${f.size}`} style={{display:"flex",alignItems:"center",gap:10,padding:"11px 12px",borderBottom:i===files.length-1?0:"1px solid #edf0f4"}}><File size={16} color="#929aa7"/><div style={{flex:1,minWidth:0}}><div className="file-name">{f.name}</div><div style={{fontSize:10,color:"#a0a6b0",marginTop:3}}>{f.size.toLocaleString()} bytes</div></div><button aria-label={`Remove ${f.name}`} className="quiet-button" onClick={()=>setFiles(old=>old.filter((_,j)=>j!==i))}><X size={14}/></button></div>)}</div>}</>}
+ {message&&<div className="notice" role="status">{message}</div>}<div className="notice"><strong style={{color:"#5c6573"}}>Processing status</strong><br/>This web build currently provides the interface and local file selection only. A real PS4 save-processing engine is not included, so it will not claim to encrypt, decrypt, resign, or modify saves without that engine.</div>
+ <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,marginTop:18}}><span style={{fontSize:11,color:"#969da8"}}>{files.length} file{files.length===1?"":"s"} selected</span><button className="primary-button" onClick={()=>setMessage(tab==="reregion"?( /^CUSA\d{5}$/.test(titleId)?`ID format looks valid: ${titleId}. Region data still needs a verified database.`:"Enter a valid ID in the format CUSA00000."):files.length?"Files selected successfully. Processing is unavailable until the save engine is connected.":"Choose at least one file first.")}><Check size={15}/> Check selection</button></div>
+ </section></div></main>
 }
