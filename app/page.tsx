@@ -1,138 +1,34 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import {
-  FileKey,
-  Unlock,
-  Lock,
-  Globe,
-  ShieldCheck,
-  Search,
-  ArrowUpRight,
-  Gamepad2,
-} from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowUpRight, FileKey2, UnlockKeyhole, LockKeyhole, Globe2, SlidersHorizontal, Search, ShieldCheck } from "lucide-react";
 
 const tools = [
-  {
-    id: "resign",
-    href: "/forge?tab=resign",
-    icon: FileKey,
-    title: "Resign",
-    description: "Transfer saves to your account",
-  },
-  {
-    id: "decrypt",
-    href: "/forge?tab=decrypt",
-    icon: Unlock,
-    title: "Decrypt",
-    description: "Decrypt your save files",
-  },
-  {
-    id: "encrypt",
-    href: "/forge?tab=encrypt",
-    icon: Lock,
-    title: "Encrypt",
-    description: "Encrypt save files for PS4",
-  },
-  {
-    id: "reregion",
-    href: "/forge?tab=reregion",
-    icon: Globe,
-    title: "ReRegion",
-    description: "Change game region",
-  },
-  {
-    id: "cheats",
-    href: "/forge?tab=cheats",
-    icon: ShieldCheck,
-    title: "Cheats Lab",
-    description: "Explore save modifications",
-  },
-  {
-    id: "cusa",
-    href: "/cusa",
-    icon: Search,
-    title: "Game Database",
-    description: "Search games by CUSA ID",
-  },
+  { id: "resign", name: "Save Resigner", description: "Prepare a save for another profile.", detail: "RESIGN", href: "/forge?tab=resign", icon: FileKey2 },
+  { id: "decrypt", name: "Decrypt Save", description: "Inspect supported encrypted save files.", detail: "DECRYPT", href: "/forge?tab=decrypt", icon: UnlockKeyhole },
+  { id: "encrypt", name: "Encrypt Save", description: "Save preparation workflow.", detail: "ENCRYPT", href: "/forge?tab=encrypt", icon: LockKeyhole },
+  { id: "reregion", name: "Region Finder", description: "Compare regional title identifiers.", detail: "REREGION", href: "/forge?tab=reregion", icon: Globe2 },
+  { id: "cheats", name: "Save Lab", description: "A workspace for save research and tools.", detail: "SAVE LAB", href: "/forge?tab=cheats", icon: SlidersHorizontal },
+  { id: "cusa", name: "CUSA Database", description: "Search PlayStation 4 title IDs.", detail: "DATABASE", href: "/cusa", icon: Search },
 ];
 
 export default function Home() {
-  return (
-    <main className="app-shell">
-      <nav className="topbar">
-        <div className="topbar-inner">
-          <Link href="/" className="brand">
-            <div className="brand-icon">
-              <Gamepad2 size={23} strokeWidth={1.7} />
-            </div>
-
-            <span className="brand-name">QoiaX</span>
+  return <main className="site-shell">
+    <div className="ambient ambient-one" aria-hidden="true"/><div className="ambient ambient-two" aria-hidden="true"/>
+    <section className="home-wrap">
+      <motion.div className="brand-title" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55 }}>QoiaX Wizard</motion.div>
+      <div className="title-rule"/>
+      <motion.section className="tool-grid" aria-label="Tools" initial="hidden" animate="show" variants={{hidden:{},show:{transition:{staggerChildren:.065}}}}>
+        {tools.map((tool) => <motion.div key={tool.id} variants={{hidden:{opacity:0,y:12},show:{opacity:1,y:0}}} transition={{duration:.32}} className="tool-card-wrap">
+          <Link className="tool-card glass-panel" href={tool.href}>
+            <span className="tool-icon"><tool.icon size={19} strokeWidth={1.7}/></span>
+            <span className="tool-copy"><span className="tool-detail">{tool.detail}</span><span className="tool-name">{tool.name}</span><span className="tool-description">{tool.description}</span></span>
+            <span className="tool-arrow"><ArrowUpRight size={17}/></span>
           </Link>
-
-          <Link href="/cusa" className="nav-link">
-            <Search size={17} />
-            <span>Game Database</span>
-          </Link>
-        </div>
-      </nav>
-
-      <section className="workspace">
-        <header className="section-header">
-          <div>
-            <p className="eyebrow">YOUR WORKSPACE</p>
-            <h1>Tools</h1>
-            <p className="section-description">
-              Everything you need, in one place.
-            </p>
-          </div>
-        </header>
-
-        <div className="tools-grid">
-          {tools.map((tool, index) => {
-            const Icon = tool.icon;
-
-            return (
-              <motion.div
-                key={tool.id}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.35,
-                  delay: index * 0.045,
-                  ease: "easeOut",
-                }}
-              >
-                <Link href={tool.href} className="tool-card">
-                  <div className="tool-card-top">
-                    <div className="tool-icon">
-                      <Icon size={22} strokeWidth={1.6} />
-                    </div>
-
-                    <ArrowUpRight
-                      size={18}
-                      className="tool-arrow"
-                      strokeWidth={1.5}
-                    />
-                  </div>
-
-                  <div className="tool-card-bottom">
-                    <h2>{tool.title}</h2>
-                    <p>{tool.description}</p>
-                  </div>
-                </Link>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        <footer className="page-footer">
-          <span>QoiaX</span>
-          <span className="footer-separator">·</span>
-          <span>Simple. Clean. Functional.</span>
-        </footer>
-      </section>
-    </main>
-  );
+        </motion.div>)}
+      </motion.section>
+      <footer className="site-footer"><span>QoiaX Wizard</span><span className="footer-dot"/> <span>PlayStation save toolkit</span></footer>
+    </section>
+  </main>;
 }
