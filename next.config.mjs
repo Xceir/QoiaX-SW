@@ -1,7 +1,17 @@
-/** @type {import(\'next\').NextConfig} */
+/** @type {import('next').NextConfig} */
+
+const isProduction = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
-  output: \'export\',
-  images: { unoptimized: true },
-  trailingSlash: true
+  output: 'export',
+
+  basePath: isProduction ? '/QoiaX-SW' : '',
+
+  images: {
+    unoptimized: true,
+  },
+
+  trailingSlash: true,
 };
+
 export default nextConfig;
