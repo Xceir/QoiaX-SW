@@ -1,51 +1,18 @@
-"use client"
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Search, Copy, ArrowLeft } from "lucide-react"
-import Link from "next/link"
+"use client";
 
-const GAMES = [
-  { name: "Assassins Creed Valhalla", cusa: "CUSA18500", region: "EU", vers: "3 versao(oes) - EU, JP, US", img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2208920/header.jpg" },
-  { name: "Assassins Creed Odyssey", cusa: "CUSA09311", region: "EU", vers: "5 versao(oes) - EU, JP, US", img: "https://cdn.cloudflare.steamstatic.com/steam/apps/812140/header.jpg" },
-  { name: "DOOM Eternal", cusa: "CUSA02092", region: "EU", vers: "EU - CUSA02092", img: "https://cdn.cloudflare.steamstatic.com/steam/apps/782330/header.jpg" },
-  { name: "DOOM 2016", cusa: "CUSA02085", region: "US", vers: "US - CUSA02085", img: "https://cdn.cloudflare.steamstatic.com/steam/apps/379720/header.jpg" },
-  { name: "God of War Ragnarok", cusa: "CUSA34384", region: "EU", vers: "EU, US, JP", img: "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg" },
-  { name: "Grand Theft Auto V", cusa: "CUSA00411", region: "EU", vers: "EU - CUSA00411", img: "https://cdn.cloudflare.steamstatic.com/steam/apps/3240220/header.jpg" },
-  { name: "The Witcher 3", cusa: "CUSA00527", region: "EU", vers: "EU - CUSA00527", img: "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg" },
-  { name: "Elden Ring", cusa: "CUSA28863", region: "EU", vers: "EU - CUSA28863", img: "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg" }
-]
-
-export default function CusaPage() {
-  const [q, setQ] = useState("")
-  const filtered = GAMES.filter((g) => g.name.toLowerCase().includes(q.toLowerCase()) || g.cusa.toLowerCase().includes(q.toLowerCase()))
-  return (
-    <main style={{minHeight:"100vh", background:"#050507", color:"white", paddingBottom:"60px"}}>
-      <div style={{maxWidth:"800px", margin:"0 auto", padding:"24px"}}>
-        <Link href="/" style={{color:"rgba(255,255,255,0.6)", textDecoration:"none", display:"flex", gap:"8px", alignItems:"center", marginBottom:"20px"}}><ArrowLeft size={16}/> بازگشت به خانه</Link>
-        <div style={{textAlign:"center", marginBottom:"32px"}}>
-          <h1 style={{fontSize:"42px", fontWeight:900, display:"flex", gap:"12px", justifyContent:"center", alignItems:"center"}}><Search/> Search CUSA</h1>
-          <div style={{fontSize:"32px", fontWeight:900, marginTop:"8px"}}>16,036</div>
-          <div style={{opacity:0.5, letterSpacing:"2px", fontSize:"12px"}}>TOTAL GAMES</div>
-        </div>
-        <div style={{position:"relative", marginBottom:"20px"}}>
-          <Search style={{position:"absolute", left:"16px", top:"50%", transform:"translateY(-50%)", opacity:0.4}}/>
-          <input value={q} onChange={(e)=>setQ(e.target.value)} placeholder="Assassins Creed یا DOOM یا CUSA..." style={{width:"100%", height:"56px", background:"rgba(255,255,255,0.06)", border:"1px solid rgba(255,255,255,0.1)", borderRadius:"16px", paddingLeft:"48px", color:"white", fontSize:"16px", outline:"none"}}/>
-        </div>
-        <div style={{background:"rgba(255,255,255,0.06)", border:"1px solid rgba(255,255,255,0.1)", borderRadius:"20px", overflow:"hidden"}}>
-          <div style={{padding:"12px 16px", opacity:0.5, fontSize:"13px", borderBottom:"1px solid rgba(255,255,255,0.1)"}}>{filtered.length} resultados</div>
-          {filtered.map((g,i)=>(
-            <motion.div key={g.cusa} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:i*0.05}} style={{display:"flex", gap:"16px", alignItems:"center", padding:"16px", borderBottom:"1px solid rgba(255,255,255,0.06)"}}>
-              <img src={g.img} alt={g.name} style={{width:"64px", height:"64px", borderRadius:"12px", objectFit:"cover"}}/>
-              <div style={{flex:1}}>
-                <div style={{fontWeight:700}}>{g.name}</div>
-                <div style={{opacity:0.5, fontSize:"12px"}}>{g.vers}</div>
-                <div style={{fontFamily:"monospace", fontSize:"13px", marginTop:"4px"}}>{g.cusa} <span style={{background: g.region==="EU" ? "#3b82f6" : g.region==="US" ? "#ef4444" : "#f59e0b", color:"white", padding:"2px 8px", borderRadius:"999px", fontSize:"10px", marginLeft:"8px"}}>{g.region}</span></div>
-              </div>
-              <button onClick={()=>{navigator.clipboard.writeText(g.cusa); alert("کپی شد: "+g.cusa)}} style={{background:"rgba(255,255,255,0.1)", border:"1px solid rgba(255,255,255,0.1)", color:"white", padding:"8px 16px", borderRadius:"999px", cursor:"pointer"}}><Copy size={14}/> Copy</button>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </main>
-  )
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import { ArrowLeft, Search, Copy, Check, Database, ExternalLink } from "lucide-react";
+import games from "../../public/data/cusa-games.json";
+type Game={cusa:string;name:string;region:string};
+export default function CusaPage(){
+ const [query,setQuery]=useState("");const [copied,setCopied]=useState("");const [region,setRegion]=useState("All");
+ const filtered=useMemo(()=>{const q=query.trim().toLowerCase();return (games as Game[]).filter(g=>(region==="All"||g.region===region)&&(!q||g.name.toLowerCase().includes(q)||g.cusa.toLowerCase().includes(q)||g.region.toLowerCase().includes(q))).sort((a,b)=>a.name.localeCompare(b.name));},[query,region]);
+ async function copy(id:string){try{await navigator.clipboard.writeText(id);setCopied(id);window.setTimeout(()=>setCopied(v=>v===id?"":v),1400)}catch{setCopied("")}}
+ return <main className="subpage-shell"><div className="subpage"><Link href="/" className="back-link"><ArrowLeft size={15}/> Back to QoiaX Wizard</Link><div className="cusa-top"><div><h1 className="page-heading">CUSA Database</h1><p className="page-lead" style={{marginBottom:0}}>Find a PlayStation 4 title ID by name or code.</p></div><span className="count-pill"><Database size={12} style={{display:"inline",verticalAlign:"-2px",marginRight:5}}/>{(games as Game[]).length} indexed entries</span></div>
+ <div className="search-box"><Search size={17}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search game name or CUSA ID…" aria-label="Search game name or CUSA ID"/><span style={{fontSize:10,color:"#a0a7b2",whiteSpace:"nowrap"}}>{filtered.length}</span></div>
+ <div style={{display:"flex",gap:7,margin:"12px 0 16px",flexWrap:"wrap"}}>{["All","EU","US","JP"].map(r=><button key={r} className={`tab-button ${region===r?"active":""}`} style={{padding:"7px 12px"}} onClick={()=>setRegion(r)}>{r==="All"?"All regions":r}</button>)}</div>
+ <section className="surface-card" style={{overflow:"hidden"}}><div className="result-meta"><span>Title matches</span><span>Title ID</span></div>{filtered.length?filtered.map(g=><div className="game-row" key={`${g.cusa}-${g.name}`}><div className="game-mark">PS4</div><div className="game-info"><div className="game-name">{g.name}</div><div className="game-id">{g.cusa}<span className="region-tag">{g.region}</span></div></div><button className="quiet-button" onClick={()=>copy(g.cusa)} aria-label={`Copy ${g.cusa}`}>{copied===g.cusa?<Check size={14}/>:<Copy size={14}/>}<span>{copied===g.cusa?"Copied":"Copy ID"}</span></button></div>):<div className="empty-state">No matching title in the currently installed dataset.<br/>Try a shorter title or search by CUSA code.</div>}</section>
+ <div className="notice"><strong style={{color:"#5c6573"}}>Database coverage</strong><br/>This package includes a small starter index of known IDs, not a complete list of every CUSA release. Unknown IDs are not invented. To provide comprehensive coverage, import a verified, regularly updated title-ID dataset into <code>public/data/cusa-games.json</code>. <a href="https://github.com/own4rd/json-games-ps4" target="_blank" rel="noreferrer" style={{display:"inline-flex",alignItems:"center",gap:4,marginTop:6,color:"#5b6677"}}>Example public dataset <ExternalLink size={11}/></a></div>
+ </div></main>
 }
