@@ -1,5 +1,8 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
@@ -24,6 +27,12 @@ function formatSize(bytes: number) {
 }
 
 export default function ForgePage() {
+  const authRouter = useRouter();
+  useEffect(() => {
+    try { if (window.sessionStorage.getItem("qoiax-wizard-session") !== "ok") authRouter.replace("/login"); }
+    catch { authRouter.replace("/login"); }
+  }, [authRouter]);
+
   const [tab, setTab] = useState<Tab>("resign");
   const [files, setFiles] = useState<File[]>([]);
   const [targetFiles, setTargetFiles] = useState<File[]>([]);
