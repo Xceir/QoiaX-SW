@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
@@ -21,11 +21,14 @@ const tools = [
 const AUTH_KEY = "qoiax-wizard-session";
 export default function Home() {
   const router = useRouter();
+  const [authed, setAuthed] = useState(false);
   useEffect(() => {
-    try { if (window.sessionStorage.getItem(AUTH_KEY) !== "ok") router.replace("/login"); }
-    catch { router.replace("/login"); }
+    try {
+      if (window.sessionStorage.getItem(AUTH_KEY) === "ok") setAuthed(true);
+      else router.replace("/login");
+    } catch { router.replace("/login"); }
   }, [router]);
-  if (typeof window !== "undefined" && window.sessionStorage.getItem(AUTH_KEY) !== "ok") return null;
+  if (!authed) return null;
   return (
     <main className="site-shell">
       <div className="ambient ambient-one" aria-hidden="true" />
