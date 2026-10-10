@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight, FileKey2, UnlockKeyhole, LockKeyhole,
-  Globe2, SlidersHorizontal, Search, Sparkles, ShieldCheck, Layers3
+  Globe2, SlidersHorizontal, Search, Sparkles, ShieldCheck, Layers3, RadioTower, Zap, BookOpen
 } from "lucide-react";
 
 const tools = [
@@ -16,6 +16,7 @@ const tools = [
   { id: "reregion", name: "Change Save Region", description: "Use a target-region save as a reference for conversion.", detail: "REGION TOOLS", href: "/forge?tab=reregion", icon: Globe2, tone: "indigo" },
   { id: "cheats", name: "Save Lab", description: "A workspace for save research and preparation.", detail: "WORKSPACE", href: "/forge?tab=cheats", icon: SlidersHorizontal, tone: "slate" },
   { id: "cusa", name: "CUSA Database", description: "Look up PlayStation 4 title identifiers.", detail: "REFERENCE", href: "/cusa", icon: Search, tone: "sky" },
+  { id: "tutorial", name: "Tutorial & Field Guide", description: "Learn save-file structure, account IDs, encryption and region compatibility.", detail: "KNOWLEDGE CENTER", href: "/tutorial", icon: BookOpen, tone: "cyan" },
 ];
 
 const AUTH_KEY = "qoiax-wizard-session";
@@ -41,9 +42,33 @@ export default function Home() {
         <nav className="top-nav" aria-label="Main navigation">
           <a href="#tools">Tools</a>
           <a href="#about">About</a>
+          <Link href="/tutorial">Tutorial</Link>
           <Link className="nav-cta" href="/forge?tab=resign">Open Wizard <ArrowUpRight size={15} /></Link>
         </nav>
       </header>
+
+      <div className="qoiax-artwork-banner" aria-label="QoiaX artwork">
+        <img src="/qoiax-site-art.png" alt="QoiaX blue and white logo artwork" />
+      </div>
+
+      <section className={`engine-core-section ${process.env.NEXT_PUBLIC_UFO_WIZARD_CONNECTED === "true" ? "is-connected" : "is-disconnected"}`} aria-label="Engine connection status">
+        <div className="engine-core-copy">
+          <span className="engine-overline"><RadioTower size={14} /> SYSTEM CORE</span>
+          <h2>{process.env.NEXT_PUBLIC_UFO_WIZARD_CONNECTED === "true" ? "CONNECTED" : "NOT CONNECTED"}</h2>
+          <p>{process.env.NEXT_PUBLIC_UFO_WIZARD_CONNECTED === "true" ? "Engine link established" : "Engine link unavailable"}</p>
+          <div className="engine-state-line"><span className="engine-state-light" />{process.env.NEXT_PUBLIC_UFO_WIZARD_CONNECTED === "true" ? "ONLINE · READY" : "OFFLINE · STANDBY"}</div>
+        </div>
+        <div className="reactor-stage" aria-hidden="true">
+          <div className="reactor-shadow" />
+          <div className="reactor-ring reactor-ring-outer"><i /><i /><i /></div>
+          <div className="reactor-ring reactor-ring-middle"><i /><i /></div>
+          <div className="reactor-ring reactor-ring-inner"><i /></div>
+          <div className="reactor-core"><div className="core-grid" /><div className="core-flare" /><div className="core-nucleus"><Zap size={31} fill="currentColor" /></div></div>
+          <span className="reactor-particle particle-a" /><span className="reactor-particle particle-b" /><span className="reactor-particle particle-c" /><span className="reactor-particle particle-d" />
+          <div className="reactor-scanline" />
+        </div>
+        <div className="engine-core-meta"><span>QX / CORE-01</span><span className="engine-meta-divider" /><span>{process.env.NEXT_PUBLIC_UFO_WIZARD_CONNECTED === "true" ? "LINK VERIFIED" : "AWAITING LINK"}</span></div>
+      </section>
 
       <section className="hero">
         <motion.div className="hero-copy" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55 }}>
@@ -77,7 +102,7 @@ export default function Home() {
       <section className="tools-section" id="tools">
         <div className="section-heading">
           <div><span className="section-kicker">THE TOOLKIT</span><h2>Everything in one place.</h2><p>Pick the workflow that matches what you need to do.</p></div>
-          <span className="tool-count">06 <small>TOOLS</small></span>
+          <span className="tool-count">07 <small>TOOLS</small></span>
         </div>
         <motion.div className="tool-grid" initial="hidden" whileInView="show" viewport={{ once: true, amount: .12 }} variants={{ hidden: {}, show: { transition: { staggerChildren: .055 } } }}>
           {tools.map((tool) => (
@@ -94,7 +119,7 @@ export default function Home() {
 
       <section className="about-strip glass-panel" id="about">
         <div className="about-icon"><ShieldCheck size={22} /></div>
-        <div><h3>Designed to stay out of your way.</h3><p>Files are selected in your browser. Actual save processing depends on a compatible processing engine being connected to this build.</p></div>
+        <div><h3>Designed to stay out of your way.</h3><p>Choose a tool to manage files, inspect save metadata, and search the CUSA database.</p></div>
         <Link href="/forge?tab=resign" className="text-link">Enter workspace <ArrowUpRight size={16} /></Link>
       </section>
 
