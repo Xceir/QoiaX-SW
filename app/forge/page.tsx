@@ -86,7 +86,13 @@ export default function ForgePage() {
   const runProcess = async () => {
     setMessageType("error");
     setMessage("");
-    if (tab === "cheats") { setMessage("Save Lab is not connected to the UFO Wizard processing flow yet."); return; }
+    if (tab === "cheats") {
+      if (!files.length) { setMessageType("error"); setMessage("Add at least one file to inspect in Save Lab."); return; }
+      const report = { app: "QoiaX Wizard", section: "Save Lab", createdAt: new Date().toISOString(), files: files.map((file) => ({ name: file.name, sizeBytes: file.size, size: formatSize(file.size), type: file.type || "unknown", lastModified: new Date(file.lastModified).toISOString() })) };
+      const blob = new Blob([JSON.stringify(report, null, 2)], { type: "application/json" });
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+      setResultUrl(URL.createObjectURL(blob)); setResultName("qoiax-save-lab-report.json"); setMessageType("success"); setMessage("File report created. Download it below."); return;
+    }
     if (tab !== "decrypt" && !psid.trim()) { setMessage("Enter your PlayStation ID before continuing."); return; }
     if (tab === "reregion" && (!targetFiles.length || !originalFiles.length)) {
       setMessage("Add both the target-region reference save and the original save."); return;
@@ -121,7 +127,14 @@ export default function ForgePage() {
       const blob = await response.blob();
       if (!blob.size) throw new Error("The upstream service returned an empty file.");
       const disposition = response.headers.get("content-disposition") || "";
-      const filename = disposition.match(/filename="([^"]+)"/i)?.[1] || `qoiax-${tab}-result.bin`;
+      const encodedFilename = disposition.match(/filename\*=UTF-8''([^;]+)/i)?.[1];
+      const quotedFilename = disposition.match(/filename="([^"]+)"/i)?.[1];
+      let filename = `qoiax-${tab}-result.bin`;
+      try {
+        if (encodedFilename) filename = decodeURIComponent(encodedFilename);
+        else if (quotedFilename) filename = quotedFilename;
+      } catch { /* keep the safe fallback filename */ }
+      filename = filename.replace(/[\\/\0-\x1f]/g, "_").slice(0, 180) || `qoiax-${tab}-result.bin`;
       if (resultUrl) URL.revokeObjectURL(resultUrl);
       setResultUrl(URL.createObjectURL(blob));
       setResultName(filename);
@@ -206,13 +219,6 @@ export default function ForgePage() {
               <input id="psn-id" className="text-field" value={psid} onChange={(e) => setPsid(e.target.value)} placeholder="Ex: XiTE-Y" autoComplete="off" required aria-required="true" />
               <p className="field-hint">Enter the Online ID of the profile you want to prepare this save for.</p>
               {dropZone("general", inputRef, files, setFiles, acceptGeneral, "Drop your save files here", "or browse your device · Multiple files supported")}
-              {tab === "encrypt" && <>
-                <div className="form-divider" />
-                <label className="field-label">Decrypted replacement files <span className="required">*</span></label>
-                {dropZone("replacement", replacementInputRef, replacementFiles, setReplacementFiles, acceptReplacement, "Add replacement files", "Files to replace inside the save")}
-                <label className="field-label">Optional sce_sys files</label>
-                {dropZone("sce-sys", sceSysInputRef, sceSysFiles, setSceSysFiles, acceptSceSys, "Add sce_sys files", "Optional param.sfo, icon0.png, keystone, etc.")}
-              </>}
             </div>}
 
             {tab === "reregion" && <div className="form-section region-flow">
@@ -231,7 +237,7 @@ export default function ForgePage() {
                 <label className="field-label" htmlFor="psn-id-encrypt">PlayStation ID <span className="required">*</span></label>
                 <input id="psn-id-encrypt" className="text-field" value={psid} onChange={(e) => setPsid(e.target.value)} placeholder="Ex: UFO-Youtube" autoComplete="off" required aria-required="true" />
               </>}
-              <div className="notice notice-neutral"><CircleHelp size={17} /><p>{tab === "decrypt" ? "Select the encrypted save files required by the decryption workflow. If your save uses paired files, include the complete pair." : tab === "encrypt" ? "Select the supported save data required by the encryption workflow." : "Select files you want to inspect or prepare. Available actions depend on the tools connected to this build."}</p></div>
+              <div className="notice notice-neutral"><CircleHelp size={17} /><p>{tab === "decrypt" ? "Select the encrypted save files required by the decryption workflow. If your save uses paired files, include the complete pair." : tab === "encrypt" ? "Select the supported save data required by the encryption workflow." : "Inspect selected files and export a local JSON report."}</p></div>
               {(tab === "decrypt" || tab === "encrypt") && <label className="field-label checkbox-field"><input type="checkbox" checked={includeSceSys} onChange={(e) => setIncludeSceSys(e.target.checked)} /> Include sce_sys folder when supported</label>}
               {dropZone("general", inputRef, files, setFiles, acceptGeneral, "Drop your save files here", "or browse your device · Multiple files supported")}
               {tab === "encrypt" && <>
@@ -245,11 +251,11 @@ export default function ForgePage() {
 
             {message && <div className={`status-message ${messageType}`} role="status"><span className="status-message-icon">{messageType === "error" ? <CircleHelp size={17} /> : <Check size={17} />}</span><p>{message}</p></div>}
 
-            <div className="engine-notice"><span className="engine-icon"><ShieldCheck size={17} /></span><div><b>External processing <span className="engine-badge">UFO WIZARD</span></b><p>Requests are submitted to UFO Wizard through the server. Processing depends on the third-party site's current form, availability, and any manual steps it requires. Uploaded saves are sent to that service.</p></div></div>
+            <div className="engine-notice"><span className="engine-icon"><span className="engine-status-dot" /></span><div><b>ENGINE STATUS <span className="engine-badge">NOT CONNECTED</span></b><p>Engine status is shown here. File analysis and report export work locally; save conversion operations require the processing engine.</p></div></div>
             {resultUrl && <div className="status-message success" role="status"><span className="status-message-icon"><Check size={17} /></span><p>Output received: <a href={resultUrl} download={resultName}>{resultName} — Download result</a></p></div>}
-            <div className="workflow-footer"><div className="file-summary"><span className="summary-dot" />{tab === "reregion" ? `${targetFiles.length} target · ${originalFiles.length} original` : tab === "encrypt" ? `${files.length} save · ${replacementFiles.length} replacement` : `${files.length} file(s) selected`}</div><button className="primary-button check-button" type="button" onClick={runProcess} disabled={isProcessing || tab === "cheats"}>{isProcessing ? <RotateCcw size={16} className="spin" /> : <ArrowUpRight size={16} />}{isProcessing ? "Processing…" : "Submit to UFO Wizard"}</button></div>
+            <div className="workflow-footer"><div className="file-summary"><span className="summary-dot" />{tab === "reregion" ? `${targetFiles.length} target · ${originalFiles.length} original` : tab === "encrypt" ? `${files.length} save · ${replacementFiles.length} replacement` : `${files.length} file(s) selected`}</div><button className="primary-button check-button" type="button" onClick={runProcess} disabled={isProcessing}>{isProcessing ? <RotateCcw size={16} className="spin" /> : <ArrowUpRight size={16} />}{isProcessing ? "Processing…" : tab === "cheats" ? "Generate file report" : "Execute"}</button></div>
           </div>
-          <footer className="workspace-footer"><span>QoiaX Wizard</span><span>PS5-inspired interface</span><span>External service integration</span></footer>
+          <footer className="workspace-footer"><span>QoiaX Wizard</span><span>PS5-inspired interface</span><span>Engine status: not connected</span></footer>
         </section>
       </div>
     </main>
