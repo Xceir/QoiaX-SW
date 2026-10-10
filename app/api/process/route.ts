@@ -11,10 +11,12 @@ export async function POST(request: NextRequest) {
   try {
     const form = await request.formData();
     const operation = String(form.get("operation") ?? "resign").toLowerCase();
-    const psnId = String(form.get("psnId") ?? "").trim();
-    const uploads = form.getAll("files").filter((v): v is File => v instanceof File);
+    const psnId = String(form.get("psnId") ?? form.get("psid") ?? "").trim();
+    const uploads = ["files", "targetFiles", "originalFiles", "replacementFiles", "sceSysFiles"]
+      .flatMap((key) => form.getAll(key))
+      .filter((v): v is File => v instanceof File);
 
-    if (!["resign", "encrypt", "decrypt", "convert"].includes(operation)) {
+    if (!["resign", "encrypt", "decrypt", "convert", "reregion"].includes(operation)) {
       return NextResponse.json({ error: "Unsupported operation." }, { status: 400 });
     }
     if (uploads.length === 0) {
@@ -31,12 +33,12 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: `${file.name} exceeds the 100 MB limit.` }, { status: 413 });
       }
     }
-    if (operation === "resign" && !psnId) {
+    if ((operation === "resign" || operation === "reregion") && !psnId) {
       return NextResponse.json({ error: "PlayStation Network ID is required for Resign." }, { status: 400 });
     }
 
     const result = await processWithUfoWizard({
-      operation,
+      operation: operation === "reregion" ? "convert" : operation as "resign" | "encrypt" | "decrypt" | "convert",
       psnId,
       files: await Promise.all(uploads.map(async (file) => ({
         name: file.name,
@@ -55,7 +57,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unexpected processing error.";
-    const status = message.includes("not configured") ? 503 : 500;
-    return NextResponse.json({ error: message }, { status });
+    const status = message.includes("not configured") ? 503 : message.includes("HTTP 4") ? 502 : 500;
+    return NextResponse.json({ error: message, message, detail: message }, { status });
   }
 }
