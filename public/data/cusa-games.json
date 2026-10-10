@@ -1,8 +1,18 @@
 [
   {
+    "cusa": "CUSA00001",
+    "name": "The Playroom",
+    "region": "US"
+  },
+  {
     "cusa": "CUSA00002",
     "name": "Killzone: Shadow Fall",
     "region": "EU"
+  },
+  {
+    "cusa": "CUSA00002",
+    "name": "Killzone: Shadow Fall",
+    "region": "US"
   },
   {
     "cusa": "CUSA00004",
@@ -10,13 +20,563 @@
     "region": "EU"
   },
   {
+    "cusa": "CUSA00005",
+    "name": "Knack",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00006",
+    "name": "Knack",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00009",
+    "name": "Resogun",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00010",
+    "name": "Resogun",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00016",
+    "name": "Warframe",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00018",
+    "name": "Warframe",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00022",
+    "name": "FIFA 14",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00023",
+    "name": "FIFA 14",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00024",
+    "name": "Call of Duty: Ghosts",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00025",
+    "name": "Call of Duty: Ghosts",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00026",
+    "name": "Assassin’s Creed IV: Black Flag",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00027",
+    "name": "Assassin’s Creed IV: Black Flag",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00028",
+    "name": "Just Dance 2014",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00029",
+    "name": "Just Dance 2014",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00031",
+    "name": "NBA 2K14",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00032",
+    "name": "NBA 2K14",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00033",
+    "name": "Need for Speed Rivals",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00034",
+    "name": "Need for Speed Rivals",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00035",
+    "name": "Madden NFL 25",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00036",
+    "name": "Battlefield 4",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00037",
+    "name": "Battlefield 4",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00040",
+    "name": "LEGO Marvel Super Heroes",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00042",
+    "name": "Tomb Raider: Definitive Edition",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00043",
+    "name": "Tomb Raider: Definitive Edition",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00044",
+    "name": "Thief",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00045",
+    "name": "Thief",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00046",
+    "name": "Outlast",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00047",
+    "name": "Outlast",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00048",
+    "name": "The LEGO Movie Videogame",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00049",
+    "name": "The LEGO Movie Videogame",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00050",
+    "name": "Rayman Legends",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00051",
+    "name": "Rayman Legends",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00052",
+    "name": "Metal Gear Solid V: Ground Zeroes",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00053",
+    "name": "Metal Gear Solid V: Ground Zeroes",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00054",
+    "name": "inFAMOUS Second Son",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00055",
+    "name": "inFAMOUS Second Son",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00056",
+    "name": "The LEGO Hobbit",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00057",
+    "name": "The LEGO Hobbit",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00058",
+    "name": "MLB 14: The Show",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00059",
+    "name": "MLB 14: The Show",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00060",
+    "name": "Child of Light",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00061",
+    "name": "Child of Light",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00062",
+    "name": "The Amazing Spider-Man 2",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00063",
+    "name": "The Amazing Spider-Man 2",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00064",
+    "name": "Trials Fusion",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00065",
+    "name": "Trials Fusion",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00066",
+    "name": "Watch Dogs",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00067",
+    "name": "Watch Dogs",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00068",
+    "name": "Murdered: Soul Suspect",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00069",
+    "name": "Murdered: Soul Suspect",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00070",
+    "name": "Sniper Elite 3",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00071",
+    "name": "Sniper Elite 3",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00072",
+    "name": "EA Sports UFC",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00073",
+    "name": "EA Sports UFC",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00074",
+    "name": "The Last of Us Remastered",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00075",
+    "name": "The Last of Us Remastered",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00076",
+    "name": "Diablo III: Reaper of Souls – Ultimate Evil Edition",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00077",
+    "name": "Diablo III: Reaper of Souls – Ultimate Evil Edition",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00078",
+    "name": "Destiny",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00079",
+    "name": "Destiny",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00080",
+    "name": "Minecraft: PlayStation 4 Edition",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00081",
+    "name": "Minecraft: PlayStation 4 Edition",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00082",
+    "name": "Driveclub",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00083",
+    "name": "Driveclub",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00084",
+    "name": "Alien: Isolation",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00085",
+    "name": "Alien: Isolation",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00086",
+    "name": "Lords of the Fallen",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00087",
+    "name": "Lords of the Fallen",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00088",
+    "name": "The Evil Within",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00089",
+    "name": "The Evil Within",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00090",
+    "name": "Assassin’s Creed Unity",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00091",
+    "name": "Assassin’s Creed Unity",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00092",
+    "name": "Far Cry 4",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00093",
+    "name": "Far Cry 4",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00094",
+    "name": "Dragon Age: Inquisition",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00095",
+    "name": "Dragon Age: Inquisition",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00096",
+    "name": "Lara Croft and the Temple of Osiris",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00097",
+    "name": "Lara Croft and the Temple of Osiris",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00098",
+    "name": "The Crew",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00099",
+    "name": "The Crew",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00100",
+    "name": "LittleBigPlanet 3",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00101",
+    "name": "LittleBigPlanet 3",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00102",
+    "name": "Resident Evil HD Remaster",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00103",
+    "name": "Resident Evil HD Remaster",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00104",
+    "name": "Dying Light",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00105",
+    "name": "Dying Light",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00106",
+    "name": "Evolve",
+    "region": "US"
+  },
+  {
     "cusa": "CUSA00107",
     "name": "Tomb Raider: Definitive Edition",
     "region": "EU"
   },
   {
+    "cusa": "CUSA00109",
+    "name": "The Order: 1886",
+    "region": "US"
+  },
+  {
     "cusa": "CUSA00110",
     "name": "Battlefield 4",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00111",
+    "name": "Dead or Alive 5: Last Round",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00112",
+    "name": "Dead or Alive 5: Last Round",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00113",
+    "name": "The Witcher 3: Wild Hunt",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00114",
+    "name": "The Witcher 3: Wild Hunt",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00115",
+    "name": "Project CARS",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00116",
+    "name": "Project CARS",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00117",
+    "name": "Mortal Kombat X",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00118",
+    "name": "Mortal Kombat X",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00119",
+    "name": "Wolfenstein: The Old Blood",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00120",
+    "name": "Wolfenstein: The Old Blood",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00121",
+    "name": "Batman: Arkham Knight",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00122",
+    "name": "Batman: Arkham Knight",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00123",
+    "name": "Final Fantasy X/X-2 HD Remaster",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00124",
+    "name": "Final Fantasy X/X-2 HD Remaster",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00125",
+    "name": "Until Dawn",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00126",
+    "name": "Until Dawn",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00127",
+    "name": "Metal Gear Solid V: The Phantom Pain",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00128",
+    "name": "Metal Gear Solid V: The Phantom Pain",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00129",
+    "name": "Mad Max",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00130",
+    "name": "Mad Max",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00131",
+    "name": "Destiny: The Taken King",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00132",
+    "name": "Destiny: The Taken King",
     "region": "EU"
   },
   {
@@ -25,9 +585,284 @@
     "region": "EU"
   },
   {
+    "cusa": "CUSA00134",
+    "name": "Assassin’s Creed Syndicate",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00135",
+    "name": "Assassin’s Creed Syndicate",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00136",
+    "name": "Just Cause 3",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00137",
+    "name": "Just Cause 3",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00138",
+    "name": "Rise of the Tomb Raider",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00139",
+    "name": "Rise of the Tomb Raider",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00140",
+    "name": "Star Wars Battlefront",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00141",
+    "name": "Star Wars Battlefront",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00142",
+    "name": "Fallout 4",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00143",
+    "name": "Fallout 4",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00144",
+    "name": "Need for Speed",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00145",
+    "name": "Need for Speed",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00146",
+    "name": "Call of Duty: Black Ops III",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00147",
+    "name": "Call of Duty: Black Ops III",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00148",
+    "name": "Guitar Hero Live",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00149",
+    "name": "Guitar Hero Live",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00150",
+    "name": "The Elder Scrolls V: Skyrim Special Edition",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00151",
+    "name": "The Elder Scrolls V: Skyrim Special Edition",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00152",
+    "name": "Dark Souls III",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00153",
+    "name": "Dark Souls III",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00154",
+    "name": "DOOM",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00155",
+    "name": "DOOM",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00156",
+    "name": "Uncharted: The Nathan Drake Collection",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00157",
+    "name": "Uncharted: The Nathan Drake Collection",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00158",
+    "name": "Street Fighter V",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00159",
+    "name": "Street Fighter V",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00160",
+    "name": "The Division",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00161",
+    "name": "The Division",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00162",
+    "name": "Far Cry Primal",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00163",
+    "name": "Far Cry Primal",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00164",
+    "name": "Ratchet & Clank",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00165",
+    "name": "Ratchet & Clank",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00166",
+    "name": "Overwatch",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00167",
+    "name": "Overwatch",
+    "region": "EU"
+  },
+  {
     "cusa": "CUSA00168",
     "name": "Need for Speed Rivals",
     "region": "EU"
+  },
+  {
+    "cusa": "CUSA00169",
+    "name": "No Man’s Sky",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00170",
+    "name": "No Man’s Sky",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00171",
+    "name": "Mafia III",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00172",
+    "name": "Mafia III",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00173",
+    "name": "Watch Dogs 2",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00174",
+    "name": "Watch Dogs 2",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00175",
+    "name": "Final Fantasy XV",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00176",
+    "name": "Final Fantasy XV",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00177",
+    "name": "Resident Evil 7: Biohazard",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00178",
+    "name": "Resident Evil 7: Biohazard",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00179",
+    "name": "Horizon Zero Dawn",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00180",
+    "name": "Horizon Zero Dawn",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00181",
+    "name": "Nier: Automata",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00182",
+    "name": "Nier: Automata",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00183",
+    "name": "Mass Effect: Andromeda",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00184",
+    "name": "Mass Effect: Andromeda",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00185",
+    "name": "Persona 5",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00186",
+    "name": "Persona 5",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00187",
+    "name": "Prey",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00188",
+    "name": "Prey",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00189",
+    "name": "Injustice 2",
+    "region": "US"
   },
   {
     "cusa": "CUSA00190",
@@ -35,9 +870,39 @@
     "region": "US"
   },
   {
+    "cusa": "CUSA00200",
+    "name": "Grand Theft Auto V",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00201",
+    "name": "Grand Theft Auto V",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00202",
+    "name": "Bloodborne",
+    "region": "EU"
+  },
+  {
     "cusa": "CUSA00203",
     "name": "The Evil Within",
     "region": "EU"
+  },
+  {
+    "cusa": "CUSA00204",
+    "name": "The Last Guardian",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00205",
+    "name": "The Last Guardian",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00206",
+    "name": "The Last of Us Remastered",
+    "region": "US"
   },
   {
     "cusa": "CUSA00207",
@@ -45,9 +910,84 @@
     "region": "US"
   },
   {
+    "cusa": "CUSA00208",
+    "name": "Gran Turismo Sport",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00209",
+    "name": "Gran Turismo Sport",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00210",
+    "name": "God of War",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00211",
+    "name": "God of War",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00212",
+    "name": "Detroit: Become Human",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00213",
+    "name": "Detroit: Become Human",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00214",
+    "name": "Spider-Man",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00215",
+    "name": "Marvel’s Spider-Man",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00216",
+    "name": "Red Dead Redemption 2",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00217",
+    "name": "Red Dead Redemption 2",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00218",
+    "name": "Days Gone",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00219",
+    "name": "Days Gone",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00220",
+    "name": "Sekiro: Shadows Die Twice",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00221",
+    "name": "Sekiro: Shadows Die Twice",
+    "region": "EU"
+  },
+  {
     "cusa": "CUSA00341",
     "name": "Uncharted 4: A Thief's End",
     "region": "EU"
+  },
+  {
+    "cusa": "CUSA00342",
+    "name": "Uncharted 4: A Thief’s End",
+    "region": "US"
   },
   {
     "cusa": "CUSA00411",
@@ -55,8 +995,23 @@
     "region": "EU"
   },
   {
+    "cusa": "CUSA00419",
+    "name": "Horizon Zero Dawn",
+    "region": "EU"
+  },
+  {
     "cusa": "CUSA00527",
     "name": "The Witcher 3: Wild Hunt",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA00552",
+    "name": "Persona 5 Royal",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00556",
+    "name": "Persona 5 Royal",
     "region": "EU"
   },
   {
@@ -70,19 +1025,64 @@
     "region": "EU"
   },
   {
+    "cusa": "CUSA07211",
+    "name": "Final Fantasy VII Remake",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA00960",
+    "name": "Final Fantasy VII Remake",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA01000",
+    "name": "The Witcher 3: Wild Hunt – Complete Edition",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA01007",
+    "name": "The Witcher 3: Wild Hunt – Complete Edition",
+    "region": "EU"
+  },
+  {
     "cusa": "CUSA01047",
     "name": "Dark Souls III",
     "region": "EU"
   },
   {
-    "cusa": "CUSA02092",
-    "name": "DOOM Eternal",
+    "cusa": "CUSA01127",
+    "name": "Ghost of Tsushima",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA01140",
+    "name": "Ghost of Tsushima",
     "region": "EU"
+  },
+  {
+    "cusa": "CUSA01240",
+    "name": "The Last of Us Part II",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA01245",
+    "name": "The Last of Us Part II",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA01363",
+    "name": "Cyberpunk 2077",
+    "region": "US"
   },
   {
     "cusa": "CUSA02085",
     "name": "DOOM (2016)",
     "region": "US"
+  },
+  {
+    "cusa": "CUSA02092",
+    "name": "DOOM Eternal",
+    "region": "EU"
   },
   {
     "cusa": "CUSA02835",
@@ -190,6 +1190,11 @@
     "region": "EU"
   },
   {
+    "cusa": "CUSA18976",
+    "name": "Elden Ring",
+    "region": "US"
+  },
+  {
     "cusa": "CUSA20004",
     "name": "Resident Evil Village",
     "region": "EU"
@@ -213,5 +1218,20 @@
     "cusa": "CUSA34384",
     "name": "God of War Ragnarök",
     "region": "EU"
+  },
+  {
+    "cusa": "CUSA34388",
+    "name": "Hogwarts Legacy",
+    "region": "US"
+  },
+  {
+    "cusa": "CUSA34407",
+    "name": "Hogwarts Legacy",
+    "region": "EU"
+  },
+  {
+    "cusa": "CUSA36848",
+    "name": "God of War Ragnarök",
+    "region": "US"
   }
 ]
